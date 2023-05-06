@@ -13,13 +13,17 @@ const useStyles = createUseStyles({
   },
   dropdown_container: { padding: 0, marginTop: "5px" },
   input: {
-    padding: "12px",
-    borderRadius: "15px",
+    padding: "10px",
+    borderRadius: "10px",
     textAlign: "left",
+    justifyContent: "center",
     background: "white",
-    border: "2px solid #6680cd",
+    border: "2px solid #566fc3",
     "&:hover": {
       cursor: "pointer",
+    },
+    "&:focus": {
+      outline: "3px solid rgba(86,111,195,.3)",
     },
   },
 });
