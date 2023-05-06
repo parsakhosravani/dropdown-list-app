@@ -15,12 +15,12 @@ function App() {
   const classes = useStyles();
 
   const options = [
-    { id: 1, label: "Education" },
-    { id: 2, label: "Yeeeah, science!" },
-    { id: 3, label: "Art" },
-    { id: 4, label: "Sport" },
-    { id: 5, label: "Games" },
-    { id: 6, label: "Health" },
+    { id: 1, label: "Education", icon: "🎓" },
+    { id: 2, label: "Yeeeah, science!", icon: "⚗️" },
+    { id: 3, label: "Art", icon: "🎭" },
+    { id: 4, label: "Sport", icon: "⚽" },
+    { id: 5, label: "Games", icon: "🎮" },
+    { id: 6, label: "Health", icon: "🏥" },
   ];
 
   return (

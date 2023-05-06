@@ -3,6 +3,7 @@ import { useState } from "react";
 export interface DropdownItem {
   id: number;
   label: string;
+  icon: string;
 }
 
 interface UseDropdownProps {
@@ -26,6 +27,7 @@ export const useDropdown = ({ items }: UseDropdownProps) => {
     const newItem = {
       id: items.length + 1,
       label: newItemLabel.trim(),
+      icon: "",
     };
     setNewItemLabel("");
     items.push(newItem);

@@ -7,23 +7,26 @@ const useStyles = createUseStyles({
   dropdown: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     minHeight: "100vh",
     minWidth: "320px",
   },
-  dropdown_container: { padding: 0, marginTop: "5px" },
+  dropdown_container: { padding: 0, marginTop: "8px" },
   input: {
-    padding: "10px",
+    fontFamily: "sans-serif",
+    fontSize: "14px",
+    padding: "10px 15px",
+    color: "#7a7b7f",
     borderRadius: "10px",
+    minWidth: "320px",
     textAlign: "left",
     justifyContent: "center",
-    background: "white",
-    border: "2px solid #566fc3",
+    background: "#fff",
+    border: "2px solid #8d9be8",
     "&:hover": {
       cursor: "pointer",
     },
     "&:focus": {
-      outline: "3px solid rgba(86,111,195,.3)",
+      outline: "3px solid rgb(208,219,254)",
     },
   },
 });
