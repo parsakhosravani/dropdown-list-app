@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Dropdown from "./components/organisms/Dropdown";
 
 function App() {
-  return (
+  const options = [
+    {id:1, label: 'Education'},
+    {id:2, label: 'Yeeeah, science!'},
+    {id:3, label: 'Art'},
+    {id:4, label: 'Sport'},
+    {id:5, label: 'Games'},
+    {id:6, label: 'Health'},
+];
+
+return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <Dropdown
+            items={options}
+        />   
+         </div>
   );
 }
 
