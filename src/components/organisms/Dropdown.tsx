@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import DropdownMenu from "./DropdownMenu";
 import { createUseStyles } from "react-jss";
 import { useDropdown, DropdownItem } from "../../hooks/useDropdown";
@@ -48,8 +48,27 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
     handleAddItem,
   } = useDropdown({ items });
 
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef, setIsOpen]);
+
   return (
-    <div className={classes.dropdown}>
+    <div className={classes.dropdown} ref={dropdownRef}>
       <input
         type="text"
         onClick={() => {
