@@ -7,7 +7,9 @@ const useStyles = createUseStyles({
     padding: "10px",
     border: "2px solid #efefef",
     minWidth: "320px",
+    maxHeight: "280px",
     borderRadius: "20px",
+    overflow: "auto",
   },
 });
 interface DropdownMenuItem {
