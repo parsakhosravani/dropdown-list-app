@@ -37,7 +37,6 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
   const [newItemLabel, setNewItemLabel] = useState("");
 
   const handleSelect = (itemId: number) => {
-    setIsOpen(true);
     const selectedItem = items.find((item) => item.id === itemId);
     setSelectedItem(selectedItem || null);
   };
@@ -66,6 +65,7 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
         onKeyDown={(event) => {
           if (event.key === "Enter") {
             handleAddItem();
+            setIsOpen(true);
           }
         }}
       />
