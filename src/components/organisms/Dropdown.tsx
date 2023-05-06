@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import DropdownMenu from "./DropdownMenu";
 import { createUseStyles } from "react-jss";
+import { useDropdown, DropdownItem } from "../../hooks/useDropdown";
 
 const useStyles = createUseStyles({
   dropdown: {
@@ -24,34 +25,21 @@ const useStyles = createUseStyles({
 });
 
 interface DropdownProps {
-  items: { id: number; label: string }[];
+  items: DropdownItem[];
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ items }) => {
   const classes = useStyles();
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<{
-    id: number;
-    label: string;
-  } | null>(null);
-  const [newItemLabel, setNewItemLabel] = useState("");
-
-  const handleSelect = (itemId: number) => {
-    const selectedItem = items.find((item) => item.id === itemId);
-    setSelectedItem(selectedItem || null);
-  };
-
-  const handleAddItem = () => {
-    if (newItemLabel.trim() === "") {
-      return;
-    }
-    const newItem = {
-      id: items.length + 1,
-      label: newItemLabel.trim(),
-    };
-    setNewItemLabel("");
-    items.push(newItem);
-  };
+  const {
+    isOpen,
+    setIsOpen,
+    selectedItem,
+    setSelectedItem,
+    newItemLabel,
+    setNewItemLabel,
+    handleSelect,
+    handleAddItem,
+  } = useDropdown({ items });
 
   return (
     <div className={classes.dropdown}>
