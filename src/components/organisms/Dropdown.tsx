@@ -8,6 +8,7 @@ const useStyles = createUseStyles({
     flexDirection: "column",
     justifyContent: "center",
     minHeight: "100vh",
+    minWidth: "320px",
   },
   dropdown_container: { padding: 0, marginTop: "5px" },
   button: {

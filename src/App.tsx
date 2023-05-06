@@ -3,7 +3,7 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
   container: {
-    fontFamily: "sans-serif",
+    fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif",
     backgroundColor: "#fafafa",
     minHeight: "100vh",
     display: "flex",
