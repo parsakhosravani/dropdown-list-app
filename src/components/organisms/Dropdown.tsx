@@ -57,10 +57,13 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
     <div className={classes.dropdown}>
       <input
         type="text"
-        onClick={() => setIsOpen(!isOpen)}
-        placeholder={selectedItem ? selectedItem.label : "Select an item"}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          setSelectedItem(null);
+        }}
+        placeholder={"Select an item"}
         className={classes.input}
-        value={newItemLabel}
+        value={selectedItem ? selectedItem.label : newItemLabel}
         onChange={(event) => setNewItemLabel(event.target.value)}
         onKeyDown={(event) => {
           if (event.key === "Enter") {
