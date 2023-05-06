@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
     minWidth: "320px",
   },
   dropdown_container: { padding: 0, marginTop: "5px" },
-  button: {
+  input: {
     padding: "12px",
     borderRadius: "15px",
     textAlign: "left",
@@ -34,17 +34,41 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
     id: number;
     label: string;
   } | null>(null);
+  const [newItemLabel, setNewItemLabel] = useState("");
 
   const handleSelect = (itemId: number) => {
+    setIsOpen(true);
     const selectedItem = items.find((item) => item.id === itemId);
     setSelectedItem(selectedItem || null);
   };
 
+  const handleAddItem = () => {
+    if (newItemLabel.trim() === "") {
+      return;
+    }
+    const newItem = {
+      id: items.length + 1,
+      label: newItemLabel.trim(),
+    };
+    setNewItemLabel("");
+    items.push(newItem);
+  };
+
   return (
     <div className={classes.dropdown}>
-      <button className={classes.button} onClick={() => setIsOpen(!isOpen)}>
-        {selectedItem ? selectedItem.label : "Select an item"}
-      </button>
+      <input
+        type="text"
+        onClick={() => setIsOpen(!isOpen)}
+        placeholder={selectedItem ? selectedItem.label : "Select an item"}
+        className={classes.input}
+        value={newItemLabel}
+        onChange={(event) => setNewItemLabel(event.target.value)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            handleAddItem();
+          }
+        }}
+      />
       <ul className={classes.dropdown_container}>
         {isOpen && <DropdownMenu items={items} onSelect={handleSelect} />}
       </ul>
