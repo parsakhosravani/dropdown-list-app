@@ -14,7 +14,28 @@ export const useStyles = createUseStyles({
     minHeight: "100vh",
     minWidth: "320px",
   },
+  dropdown_Input: {
+    position: "relative",
+    "&::after": {
+      content: "''",
+      top: "30%",
+      right: "6%",
+      width: "8px",
+      height: "8px",
+      border: "solid #7a7b7f",
+      borderWidth: "0 2px 2px 0",
+      transform: "rotate(45deg)",
+      position: "absolute",
+    },
+  },
+  open:{
+    "&::after": {
+      top: "45%",
+      transform: "rotate(225deg)",
+    },
+    },
   dropdown_container: { padding: 0, marginTop: "8px" },
+ 
   input: {
     fontFamily: "sans-serif",
     fontSize: "14px",
@@ -24,8 +45,8 @@ export const useStyles = createUseStyles({
     minWidth: "320px",
     textAlign: "left",
     justifyContent: "center",
-    background: "#fff",
     border: "2px solid #8d9be8",
+    
     "&:hover": {
       cursor: "pointer",
     },
@@ -62,7 +83,7 @@ export const useStyles = createUseStyles({
     position: "relative",
     "&::after": {
       content: "''",
-      top: "30%",
+      top: "33%",
       right: "7%",
       width: "5px",
       height: "9px",

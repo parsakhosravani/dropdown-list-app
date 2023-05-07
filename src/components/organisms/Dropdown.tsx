@@ -38,6 +38,7 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
   });
   return (
     <div className={classes.dropdown} ref={dropdownRef}>
+      <span className={`${classes.dropdown_Input} ${isOpen ? classes.open : ""}`}>
       <Input
         onClick={() => {
           setIsOpen(!isOpen);
@@ -54,6 +55,7 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
           }
         }}
       />
+      </span>
       <ul className={classes.dropdown_container}>
         {isOpen && (
           <DropdownMenu

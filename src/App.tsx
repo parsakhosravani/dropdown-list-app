@@ -9,12 +9,12 @@ const MemoizedDropdown = memo(Dropdown, (prevProps, nextProps) => {
 function App() {
   const classes = useStyles();
   const options = [
-    { id: 1, label: "Education", icon: "🎓" },
-    { id: 2, label: "Yeeeah, science!", icon: "⚗️" },
-    { id: 3, label: "Art", icon: "🎭" },
-    { id: 4, label: "Sport", icon: "⚽" },
-    { id: 5, label: "Games", icon: "🎮" },
-    { id: 6, label: "Health", icon: "🏥" },
+    { id: 1, label: "Education", icon: " 🎓" },
+    { id: 2, label: "Yeeeah, science!", icon: " ⚗️" },
+    { id: 3, label: "Art", icon: " 🎭" },
+    { id: 4, label: "Sport", icon: " ⚽" },
+    { id: 5, label: "Games", icon: " 🎮" },
+    { id: 6, label: "Health", icon: " 🏥" },
   ];
 
   return (
