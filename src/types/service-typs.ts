@@ -25,3 +25,12 @@ export interface DropdownMenuProps {
   onSelect: (itemId: number) => void;
   selectedItem: DropdownMenuItem | null;
 }
+
+export interface InputProps {
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  className?: string;
+}

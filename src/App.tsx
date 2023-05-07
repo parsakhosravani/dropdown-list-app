@@ -3,7 +3,6 @@ import { memo } from "react";
 import { useStyles } from "./styles/styles";
 
 const MemoizedDropdown = memo(Dropdown, (prevProps, nextProps) => {
-  // Only re-render Dropdown if the items array has changed
   return prevProps.items === nextProps.items;
 });
 

@@ -1,45 +1,44 @@
-import React, { useEffect, useRef } from "react";
+import React, {useRef, useState, useCallback } from "react";
 import DropdownMenu from "./DropdownMenu";
-import { useDropdown } from "../../components/organisms/useDropdown";
+import Input from "../atoms/Input";
 import { useStyles } from "../../styles/styles";
-import { DropdownProps } from "../../types/service-typs";
+import { DropdownItem, DropdownProps } from "../../types/service-typs";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 const Dropdown: React.FC<DropdownProps> = ({ items }) => {
   const classes = useStyles();
-  const {
-    isOpen,
-    setIsOpen,
-    selectedItem,
-    setSelectedItem,
-    newItemLabel,
-    setNewItemLabel,
-    handleSelect,
-    handleAddItem,
-  } = useDropdown({ items });
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<DropdownItem | null>(null);
+  const [newItemLabel, setNewItemLabel] = useState("");
+
+  const handleSelect = useCallback(
+    (itemId: number) => {
+      const selectedItem = items.find((item) => item.id === itemId);
+      setSelectedItem(selectedItem || null);
+    },
+    [items]
+  );
+
+  const handleAddItem = useCallback(() => {
+    if (newItemLabel.trim() === "") {
+      return;
+    }
+    const newItem = {
+      id: items.length + 1,
+      label: newItemLabel.trim(),
+      icon: "",
+    };
+    setNewItemLabel("");
+    items.push(newItem);
+  }, [items, newItemLabel]);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef, setIsOpen]);
-
+  useClickOutside(dropdownRef, () => {
+    setIsOpen(false);
+  });
   return (
     <div className={classes.dropdown} ref={dropdownRef}>
-      <input
-        type="text"
+      <Input
         onClick={() => {
           setIsOpen(!isOpen);
           setSelectedItem(null);
