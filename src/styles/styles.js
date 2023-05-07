@@ -45,6 +45,7 @@ export const useStyles = createUseStyles({
   },
   item: {
     padding: "10px 20px",
+    margin: "5px",
     cursor: "pointer",
     listStyle: "none",
     color: "#7a7b7f",
