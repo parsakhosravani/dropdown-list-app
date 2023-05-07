@@ -1,39 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import DropdownMenu from "./DropdownMenu";
-import { createUseStyles } from "react-jss";
-import { useDropdown, DropdownItem } from "../../hooks/useDropdown";
-
-const useStyles = createUseStyles({
-  dropdown: {
-    display: "flex",
-    flexDirection: "column",
-    minHeight: "100vh",
-    minWidth: "320px",
-  },
-  dropdown_container: { padding: 0, marginTop: "8px" },
-  input: {
-    fontFamily: "sans-serif",
-    fontSize: "14px",
-    padding: "10px 15px",
-    color: "#7a7b7f",
-    borderRadius: "10px",
-    minWidth: "320px",
-    textAlign: "left",
-    justifyContent: "center",
-    background: "#fff",
-    border: "2px solid #8d9be8",
-    "&:hover": {
-      cursor: "pointer",
-    },
-    "&:focus": {
-      outline: "3px solid rgb(208,219,254)",
-    },
-  },
-});
-
-interface DropdownProps {
-  items: DropdownItem[];
-}
+import { useDropdown } from "../../components/organisms/useDropdown";
+import { useStyles } from "../../styles/styles";
+import { DropdownProps } from "../../types/service-typs";
 
 const Dropdown: React.FC<DropdownProps> = ({ items }) => {
   const classes = useStyles();

@@ -1,19 +1,14 @@
 import Dropdown from "./components/organisms/Dropdown";
-import { createUseStyles } from "react-jss";
+import { memo } from "react";
+import { useStyles } from "./styles/styles";
 
-const useStyles = createUseStyles({
-  container: {
-    fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif",
-    backgroundColor: "#fafafa",
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-  },
+const MemoizedDropdown = memo(Dropdown, (prevProps, nextProps) => {
+  // Only re-render Dropdown if the items array has changed
+  return prevProps.items === nextProps.items;
 });
 
 function App() {
   const classes = useStyles();
-
   const options = [
     { id: 1, label: "Education", icon: "🎓" },
     { id: 2, label: "Yeeeah, science!", icon: "⚗️" },
@@ -25,7 +20,7 @@ function App() {
 
   return (
     <div className={classes.container}>
-      <Dropdown items={options} />
+      <MemoizedDropdown items={options} />
     </div>
   );
 }

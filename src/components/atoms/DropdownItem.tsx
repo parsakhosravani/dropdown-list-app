@@ -1,24 +1,5 @@
 import React from "react";
-import { createUseStyles } from "react-jss";
-
-const useStyles = createUseStyles({
-  item: {
-    padding: "10px 20px",
-    cursor: "pointer",
-    listStyle: "none",
-    color: "#7a7b7f",
-    "&:hover": {
-      backgroundColor: "#f2f4ff",
-      color: "#566fc3",
-      borderRadius: "10px",
-    },
-  },
-  selected: {
-    backgroundColor: "#f2f4ff",
-    color: "#566fc3",
-    borderRadius: "10px",
-  },
-});
+import { useStyles } from "../../styles/styles";
 
 interface DropdownItemProps {
   id: number;

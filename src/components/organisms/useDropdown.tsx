@@ -1,26 +1,20 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import { DropdownItem, DropdownProps } from "../../types/service-typs";
 
-export interface DropdownItem {
-  id: number;
-  label: string;
-  icon: string;
-}
-
-interface UseDropdownProps {
-  items: DropdownItem[];
-}
-
-export const useDropdown = ({ items }: UseDropdownProps) => {
+export const useDropdown = ({ items }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<DropdownItem | null>(null);
   const [newItemLabel, setNewItemLabel] = useState("");
 
-  const handleSelect = (itemId: number) => {
-    const selectedItem = items.find((item) => item.id === itemId);
-    setSelectedItem(selectedItem || null);
-  };
+  const handleSelect = useCallback(
+    (itemId: number) => {
+      const selectedItem = items.find((item) => item.id === itemId);
+      setSelectedItem(selectedItem || null);
+    },
+    [items]
+  );
 
-  const handleAddItem = () => {
+  const handleAddItem = useCallback(() => {
     if (newItemLabel.trim() === "") {
       return;
     }
@@ -31,7 +25,7 @@ export const useDropdown = ({ items }: UseDropdownProps) => {
     };
     setNewItemLabel("");
     items.push(newItem);
-  };
+  }, [items, newItemLabel]);
 
   return {
     isOpen,
