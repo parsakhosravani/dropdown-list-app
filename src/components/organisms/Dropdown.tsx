@@ -44,7 +44,7 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
           setIsOpen(!isOpen);
           setSelectedItem(null);
         }}
-        placeholder={"Select an item"}
+        placeholder={"Select an item or write it down to add!"}
         className={classes.input}
         value={selectedItem ? selectedItem.label : newItemLabel}
         onChange={(event) => setNewItemLabel(event.target.value)}
@@ -56,7 +56,13 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
         }}
       />
       <ul className={classes.dropdown_container}>
-        {isOpen && <DropdownMenu items={items} onSelect={handleSelect} />}
+        {isOpen && (
+          <DropdownMenu
+            items={items}
+            onSelect={handleSelect}
+            selectedItem={selectedItem}
+          />
+        )}
       </ul>
     </div>
   );
