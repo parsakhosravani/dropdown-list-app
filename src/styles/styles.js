@@ -59,5 +59,17 @@ export const useStyles = createUseStyles({
     backgroundColor: "#f2f4ff",
     color: "#566fc3",
     borderRadius: "10px",
+    position: "relative",
+    "&::after": {
+      content: "''",
+      top: "30%",
+      right: "7%",
+      width: "5px",
+      height: "9px",
+      border: "solid #566fc3",
+      borderWidth: "0 2px 2px 0",
+      transform: "rotate(45deg)",
+      position: "absolute",
+    },
   },
 });
