@@ -1,34 +1,34 @@
-import React, {useRef, useState, useCallback } from "react";
-import DropdownMenu from "./DropdownMenu";
-import Input from "../atoms/Input";
-import { useStyles } from "../../styles/styles";
-import { DropdownItem, DropdownProps } from "../../types/service-typs";
-import { useClickOutside } from "../../hooks/useClickOutside";
+import React, {useRef, useState, useCallback} from 'react';
+import DropdownMenu from './DropdownMenu';
+import Input from '../atoms/Input';
+import {useStyles} from '../../styles/styles';
+import {DropdownItem, DropdownProps} from '../../types/service-types';
+import {useClickOutside} from '../../hooks/useClickOutside';
 
-const Dropdown: React.FC<DropdownProps> = ({ items }) => {
+const Dropdown: React.FC<DropdownProps> = ({items}) => {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<DropdownItem | null>(null);
-  const [newItemLabel, setNewItemLabel] = useState("");
+  const [newItemLabel, setNewItemLabel] = useState('');
 
   const handleSelect = useCallback(
     (itemId: number) => {
       const selectedItem = items.find((item) => item.id === itemId);
       setSelectedItem(selectedItem || null);
     },
-    [items]
+    [items],
   );
 
   const handleAddItem = useCallback(() => {
-    if (newItemLabel.trim() === "") {
+    if (newItemLabel.trim() === '') {
       return;
     }
     const newItem = {
       id: items.length + 1,
       label: newItemLabel.trim(),
-      icon: "",
+      icon: '',
     };
-    setNewItemLabel("");
+    setNewItemLabel('');
     items.push(newItem);
   }, [items, newItemLabel]);
 
@@ -38,23 +38,24 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
   });
   return (
     <div className={classes.dropdown} ref={dropdownRef}>
-      <span className={`${classes.dropdown_Input} ${isOpen ? classes.open : ""}`}>
-      <Input
-        onClick={() => {
-          setIsOpen(!isOpen);
-          setSelectedItem(null);
-        }}
-        placeholder={"Select an item or write it down to add!"}
-        className={classes.input}
-        value={selectedItem ? selectedItem.label : newItemLabel}
-        onChange={(event) => setNewItemLabel(event.target.value)}
-        onKeyDown={(event) => {
-          if (event.key === "Enter") {
-            handleAddItem();
-            setIsOpen(true);
-          }
-        }}
-      />
+      <span
+        className={`${classes.dropdown_Input} ${isOpen ? classes.open : ''}`}>
+        <Input
+          onClick={() => {
+            setIsOpen(!isOpen);
+            setSelectedItem(null);
+          }}
+          placeholder={'Select an item or write it down to add!'}
+          className={classes.input}
+          value={selectedItem ? selectedItem.label : newItemLabel}
+          onChange={(event) => setNewItemLabel(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              handleAddItem();
+              setIsOpen(true);
+            }
+          }}
+        />
       </span>
       <ul className={classes.dropdown_container}>
         {isOpen && (

@@ -1,7 +1,7 @@
-import React from "react";
-import DropdownItem from "../atoms/DropdownItem";
-import { useStyles } from "../../styles/styles";
-import { DropdownMenuProps } from "../../types/service-typs";
+import React from 'react';
+import DropdownItem from '../atoms/DropdownItem';
+import {useStyles} from '../../styles/styles';
+import {DropdownMenuProps} from '../../types/service-types';
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({
   items,

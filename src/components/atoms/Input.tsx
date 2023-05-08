@@ -1,6 +1,6 @@
-import React from "react";
-import { useStyles } from "../../styles/styles";
-import { InputProps } from "../../types/service-typs";
+import React from 'react';
+import {useStyles} from '../../styles/styles';
+import {InputProps} from '../../types/service-types';
 
 const Input: React.FC<InputProps> = ({
   onClick,
@@ -14,7 +14,7 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <input
-      type="text"
+      type='text'
       onClick={onClick}
       placeholder={placeholder}
       className={`${classes.input} ${className}`}

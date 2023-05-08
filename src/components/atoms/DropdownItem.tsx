@@ -1,6 +1,6 @@
-import React from "react";
-import { useStyles } from "../../styles/styles";
-import { DropdownItemProps } from "../../types/service-typs";
+import React from 'react';
+import {useStyles} from '../../styles/styles';
+import {DropdownItemProps} from '../../types/service-types';
 
 const DropdownItem: React.FC<DropdownItemProps> = ({
   id,
@@ -12,9 +12,8 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
   const classes = useStyles();
   return (
     <li
-      className={`${classes.item} ${isSelected ? classes.selected : ""}`}
-      onClick={() => onSelect(id)}
-    >
+      className={`${classes.item} ${isSelected ? classes.selected : ''}`}
+      onClick={() => onSelect(id)}>
       {label}
       {icon}
     </li>
